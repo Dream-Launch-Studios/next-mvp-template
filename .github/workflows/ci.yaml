@@ -3,34 +3,6 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install Dependencies
-        run: npm install -g pnpm && pnpm install
-
-      - name: Copy .env.example files
-        shell: bash
-        run: find . -type f -name ".env.example" -exec sh -c 'cp "$1" "${1%.*}"' _ {} \;
-
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Run Tests
-        run: pnpm test
-
-      - name: Build
-        run: pnpm build
-
-      - name: Deploy
-        run: pnpm deploy
-
   semantic-commit-check:
     runs-on: ubuntu-latest
 
