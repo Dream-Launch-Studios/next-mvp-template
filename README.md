@@ -34,20 +34,10 @@ A full-stack web application template built with the [T3 Stack](https://create.t
    ```
 
 3. Set up your environment variables
-   Create a `.env` file in the root of your project with the following variables:
+   ```bash
+   cp .env.example .env
    ```
-   # DATABASE
-   DATABASE_URL="postgresql://postgres:password@localhost:5432/next-mvp-template"
    
-   # ENVIRONMENT
-   NODE_ENV="development"
-   
-   # NEXTAUTH
-   # Generate a secure 32-character secret: https://generate-secret.vercel.app/32
-   NEXTAUTH_SECRET=your_generated_secret_here
-   NEXTAUTH_URL="http://localhost:3000"
-   ```
-
 4. Start the development database
    ```bash
    chmod +x start-database.sh
@@ -94,30 +84,8 @@ next-mvp-template/
 │   └── env.js         # Environment variables schema
 ├── prisma/            # Prisma schema and migrations
 ├── public/            # Static assets
-└── start-database.sh  # Script to start PostgreSQL in Docker
+└── scripts/           # Utility scripts
 ```
-
-## Adding Features
-
-### Authentication
-Configure NextAuth.js in `src/app/(auth)` for user authentication.
-
-### Database Models
-Add or modify your database schema in `prisma/schema.prisma`, then run:
-```bash
-pnpm db:generate
-pnpm db:push
-```
-
-### API Routes
-Create API endpoints with in the `src/server/api` directory.
-
-### Components
-1. Add reusable components in `src/components`
-2. For UI components, use Shadcn UI:
-   ```bash
-   pnpm dlx shadcn-ui@latest add button
-   ```
 
 ## Learn More
 
