@@ -1,19 +1,123 @@
-# Create T3 App
+# Next.js MVP Template
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A full-stack web application template built with the [T3 Stack](https://create.t3.gg/). This template provides a solid foundation for building scalable, type-safe web applications with modern technologies.
 
-## What's next? How do I make an app with this?
+## Tech Stack
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- [Next.js](https://nextjs.org) - React framework for building full-stack web applications
+- [NextAuth.js](https://next-auth.js.org) - Authentication for Next.js
+- [Prisma](https://prisma.io) - Type-safe ORM for database access
+- [Drizzle](https://orm.drizzle.team) - TypeScript ORM alternative
+- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
+- [Shadcn UI](https://ui.shadcn.com) - Re-usable UI components built with Radix UI and Tailwind
+- [TypeScript](https://www.typescriptlang.org) - Static typing for JavaScript
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Getting Started
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Prerequisites
+
+- [Node.js](https://nodejs.org) (v18 or newer)
+- [pnpm](https://pnpm.io/) (v9.15.4 or newer)
+- [PostgreSQL](https://www.postgresql.org/) (or use the included Docker setup)
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/next-mvp-template.git
+   cd next-mvp-template
+   ```
+
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+
+3. Set up your environment variables
+   Create a `.env` file in the root of your project with the following variables:
+   ```
+   # DATABASE
+   DATABASE_URL="postgresql://postgres:password@localhost:5432/next-mvp-template"
+   
+   # ENVIRONMENT
+   NODE_ENV="development"
+   
+   # NEXTAUTH
+   # Generate a secure 32-character secret: https://generate-secret.vercel.app/32
+   NEXTAUTH_SECRET=your_generated_secret_here
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
+
+4. Start the development database
+   ```bash
+   chmod +x start-database.sh
+   ./start-database.sh
+   ```
+
+5. Run database migrations
+   ```bash
+   pnpm db:migrate
+   ```
+
+6. Start the development server
+   ```bash
+   pnpm dev
+   ```
+
+## Development Scripts
+
+- `pnpm dev` - Start the development server with Turbo
+- `pnpm build` - Build for production
+- `pnpm start` - Start the production server
+- `pnpm preview` - Build and preview the production build
+- `pnpm lint` - Check for linting issues
+- `pnpm lint:fix` - Fix linting issues
+- `pnpm typecheck` - Check for TypeScript errors
+- `pnpm db:generate` - Generate Prisma client after schema changes
+- `pnpm db:push` - Push schema changes to the database
+- `pnpm db:studio` - Open Prisma Studio to manage your database
+- `pnpm format:check` - Check formatting
+- `pnpm format:write` - Fix formatting issues
+
+## Project Structure
+
+```
+next-mvp-template/
+├── src/
+│   ├── app/           # Next.js App Router
+│   ├── components/    # Reusable components
+│   │   └── ui/        # Shadcn UI components
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utility functions and libraries
+│   ├── server/        # Server-side code
+│   ├── styles/        # Global styles
+│   └── env.js         # Environment variables schema
+├── prisma/            # Prisma schema and migrations
+├── public/            # Static assets
+└── start-database.sh  # Script to start PostgreSQL in Docker
+```
+
+## Adding Features
+
+### Authentication
+Configure NextAuth.js in `src/app/(auth)` for user authentication.
+
+### Database Models
+Add or modify your database schema in `prisma/schema.prisma`, then run:
+```bash
+pnpm db:generate
+pnpm db:push
+```
+
+### API Routes
+Create API endpoints with in the `src/server/api` directory.
+
+### Components
+1. Add reusable components in `src/components`
+2. For UI components, use Shadcn UI:
+   ```bash
+   pnpm dlx shadcn-ui@latest add button
+   ```
 
 ## Learn More
 
@@ -24,7 +128,6 @@ To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the fo
 
 You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
 
-## How do I deploy this?
+## Deployment
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-# next-mvp-template
